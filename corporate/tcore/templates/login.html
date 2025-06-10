@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block content %}
+<section class="d-flex justify-content-center my-4">
+    <a class="logo" href="{% url 'anasayfa' %}">sahibinden.com</a>
+</section>
+
+<div class="d-flex justify-content-center align-items-center" style="width: 50%;margin: auto;">
+    <div class="p-4 shadow" style="width: 100%; background-color: white;">
+        <h2 class="mb-4 text-center">Giriş Yap</h2>
+        {% if error %}
+            <p class="text-danger text-center">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" class="form-control mb-3" placeholder="Kullanıcı adı" autofocus>
+            <input type="password" name="password" class="form-control mb-3" placeholder="Şifre">
+            <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

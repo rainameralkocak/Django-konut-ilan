@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}İlan Sil{% endblock %}
+{% block content %}
+<h2>İlanı Sil</h2>
+<p>“{{ ilan.baslik }}” başlıklı ilanı silmek istediğinize emin misiniz?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    <a href="{% url 'ilanlarim' %}" class="btn btn-secondary">İptal</a>
+</form>
+{% endblock %}

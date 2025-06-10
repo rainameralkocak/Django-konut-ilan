@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Filtrele{% endblock %}
+{% block content %}
+<h2>İlanları Filtrele</h2>
+<form method="get" class="mb-4">
+    <input type="text" name="sehir" placeholder="Şehir" class="form-control mb-2">
+    <input type="number" name="oda" placeholder="Oda Sayısı" class="form-control mb-2">
+    <input type="number" name="fiyat_min" placeholder="Min Fiyat" class="form-control mb-2">
+    <input type="number" name="fiyat_max" placeholder="Max Fiyat" class="form-control mb-2">
+    <button type="submit" class="btn btn-primary">Filtrele</button>
+</form>
+
+<ul class="list-group">
+    {% for ilan in ilanlar %}
+        <li class="list-group-item">
+            <strong>{{ ilan.baslik }}</strong> - {{ ilan.sehir }} - {{ ilan.fiyat }} TL - {{ ilan.oda_sayisi }}+1
+        </li>
+    {% empty %}
+        <li class="list-group-item">Kriterlere uygun ilan bulunamadı.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
